@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Samples/Mixed Reality Toolkit Examples/2.8.3/Demos - Input/Scenes/HandJointChaserExample.unity
+    guid: 578633004acf0bb44bb6c246084b43b7
+  - enabled: 0
+    path: Assets/Scenes/Test.unity
+    guid: 73f25d508e84e8b41b6f4ed1078e46b2
+  - enabled: 0
+    path: Assets/Scenes/FATGUE.unity
+    guid: 9421e690929368e409c1303e958e7f5e
+  - enabled: 0
+    path: Assets/Scenes/FATGUE 2.unity
+    guid: bc4262af61ca69c4f95b535572bc3332
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/TestAssessOne.unity
+    guid: 2c3fd303eb192994a97a2857f2ec6aa0
+  - enabled: 0
+    path: Assets/Scenes/TestAssessTwo.unity
+    guid: fd12f1212dab17e4f89e5dba1340caa8
+  - enabled: 0
+    path: Assets/Scenes/Attention.unity
+    guid: 8c36634ed8d9f0e4282047452453373e
+  - enabled: 0
+    path: Assets/Scenes/TestUDP.unity
+    guid: efbe0158d0e6a2a4e97626e9d8b0d850
+  - enabled: 0
+    path: Assets/Scenes/StartScene.unity
+    guid: 0912c2aa89d92e84b957e7987ee9b2f8
+  - enabled: 0
+    path: Assets/Scenes/AssessOne.unity
+    guid: a169f166ad2eb084c93f83505103f70a
+  - enabled: 0
+    path: Assets/Scenes/Mid.unity
+    guid: de27c950f01f81a4f863f7fce2e3795f
+  - enabled: 1
+    path: Assets/Scenes/Relax.unity
+    guid: 6ea1a00b4f90c6f49aab898bca6bfab7
+  - enabled: 1
+    path: Assets/Scenes/Prepare.unity
+    guid: 20f922ea2985e134c8b3bda45d0b663c
+  - enabled: 1
+    path: Assets/Scenes/MoveScene.unity
+    guid: 1c05b49f797e14146b6d005bdb66042e
+  - enabled: 1
+    path: Assets/Scenes/DaFen.unity
+    guid: e6ac689b21573f84c9a185fe4a08f628
+  - enabled: 1
+    path: Assets/Scenes/PostRelax.unity
+    guid: d8fe804ef08d3264ab4483dfde2fb008
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: dd81d03527bfd5147b23dfd08967887c
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 71805bdc4bb0da940b71d1d552f009f8, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: e25313f78fda70346b22e3bf0ee742f3, type: 2}
