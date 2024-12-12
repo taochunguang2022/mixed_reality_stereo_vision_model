@@ -51,4 +51,9 @@ The beginning of each record was set to 00:00. They represent general descriptor
   - P3, Pz, P4, PO3, PO4
 - Occipital
   - O1, Oz, O2
-  
+## Model
+All classification model scripts were developed in Python 3.9, using PyTorch 1.12.0 with CUDA 11.3 and torch-geometric version 2.3.1, as the models primarily involve graph neural networks (GNN). 
+### Unimodal Assess
+Considering the various time series variables mentioned above, train models using LGBM (Light Gradient Boosting Machine), MLP (Multi-Layer Perceptron), RF (Random Forest), SVM (Support Vector Machine), and XB (Extreme Gradient Boosting) and evaluate the accuracy of predicting fatigue.
+###  Multimodal Characterization Assess
+The RAINDROP model is very useful for our research. We provide the code for the RAINDROP model as well as the following baseline models: Transformer, GRU-D, MTGNN, SeFT, and DGM2. These models can verify the effectiveness of the multimodal features we extracted.
