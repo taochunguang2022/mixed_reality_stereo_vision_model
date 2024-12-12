@@ -5,7 +5,9 @@ This repository contains processed multimodal datasets and implementation model 
 
   ![image](https://github.com/taochunguang2022/mixed_reality_stereo_vision_model/blob/main/overview.jpg)
 ## Datasets
+The P12 dataset primarily originates from data features extracted from the ErgoLAB wireless ECG sensor and the ErgoLAB wearable finger sensor. The P36 dataset expands upon P12 by adding 24-channel brain network features. Specifically, as follows:
+  ![image](https://github.com/taochunguang2022/mixed_reality_stereo_vision_model/blob/main/datasets.jpg)
 ### P12
-The P12 dataset primarily originates from data features extracted from the ErgoLAB wireless ECG sensor and the ErgoLAB wearable finger sensor, specifically as follows:
+
 
   
