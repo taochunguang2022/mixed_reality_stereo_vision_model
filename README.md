@@ -16,8 +16,7 @@ The beginning of each record was set to 00:00. They represent general descriptor
 ### Outcome-related Descriptors
 - RecordID (a unique record)
 - fatigue (0: no, or 1: yes)
-### P12data
-"P12" refers to a dataset that consists of all 12 types of peripheral physiological features. These 12 variables are randomly distributed at times other than 00:00.
+### Time Series Variables
 - chestHR
   - Heart rate values for ECG signals
 - chestIBI
@@ -42,8 +41,6 @@ The beginning of each record was set to 00:00. They represent general descriptor
   - Oxygen saturation test in finger blood
 - fingerSKT
   - Finger skin temperature   
-### P36data
-"P36" expands on P12 by incorporating brain network features from 24 channels, resulting in a dataset that combines both peripheral physiological and brain network features.
 - Frontal
   - Fp1, Fp2, AF3, AF4, F7, Fz, F8, FC5, FC6
 - Temporal
