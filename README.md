@@ -9,7 +9,15 @@ Every participant was mandated to fully view 2 restful scenes and 15 movement sc
 ## Datasets
 The P12 dataset primarily originates from data features extracted from the ErgoLAB wireless ECG sensor and the ErgoLAB wearable finger sensor. The P36 dataset expands upon P12 by adding 24-channel brain network features. Specifically, as follows:
   ![image](https://github.com/taochunguang2022/mixed_reality_stereo_vision_model/blob/main/datasets.jpg)
-### P12
+### General Descriptors
+The beginning of each record was set to 00:00. They represent general descriptors.
+- RecordID (a unique record)
+- Gender (0: male, or 1: female)
+### Outcome-related Descriptors
+- RecordID (a unique record)
+- fatigue (0: no, or 1: yes)
+### P12data
+"P12" refers to a dataset that consists of all 12 types of peripheral physiological features. These 12 variables are randomly distributed at times other than 00:00.
 - chestHR
   - Heart rate values for ECG signals
 - chestIBI
@@ -34,8 +42,8 @@ The P12 dataset primarily originates from data features extracted from the ErgoL
   - Oxygen saturation test in finger blood
 - fingerSKT
   - Finger skin temperature   
-### P36
-Based on the P12 dataset, we also calculated the average values of brain network node properties in the alpha, theta, and delta frequency bands across 24 channels. These node properties mainly include: Betweenness Centrality (BC), Node Efficiency (NE), and Clustering Coefficient (CC).
+### P36data
+"P36" expands on P12 by incorporating brain network features from 24 channels, resulting in a dataset that combines both peripheral physiological and brain network features.
 - Frontal
   - Fp1, Fp2, AF3, AF4, F7, Fz, F8, FC5, FC6
 - Temporal
