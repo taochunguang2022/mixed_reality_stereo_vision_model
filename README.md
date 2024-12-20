@@ -66,7 +66,7 @@ pip install -r requirements.txt
 ### Unimodal Assess
 Considering the various time series variables mentioned above, train models using the following classifiers:
 - LGBM (Light Gradient Boosting Machine)
-- MLP (Multi-Layer Perceptron),
+- MLP (Multi-Layer Perceptron)
 - RF (Random Forest)
 - SVM (Support Vector Machine)
 - XB (Extreme Gradient Boosting)
@@ -74,7 +74,7 @@ These models can be evaluated for their accuracy in predicting fatigue.
 
 ### Multimodal Characterization Assess
 The RAINDROP model is very useful for our research. We provide the code for the RAINDROP model as well as the following baseline models: 
-- Transformer, 
+- Transformer
 - GRU-D, MTGNN
 - SeFT
 - DGM2
