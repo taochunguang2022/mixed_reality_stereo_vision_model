@@ -51,8 +51,69 @@ The beginning of each record was set to 00:00. They represent general descriptor
   - P3, Pz, P4, PO3, PO4
 - Occipital
   - O1, Oz, O2
-## Model
-All classification model scripts were developed in Python 3.9, using PyTorch 1.12.0 with CUDA 11.3 and torch-geometric version 2.3.1, as the models primarily involve graph neural networks (GNN). 
+
+## RainDrop Model Architecture
+
+All classification model scripts were developed in Python 3.9, using PyTorch 1.12.0 with CUDA 11.3 and torch-geometric version 2.3.1, as the models primarily involve graph neural networks (GNN). Taking the RainDrop model as an example, the architecture diagram is as follows:
+![image](https://github.com/taochunguang2022/mixed_reality_stereo_vision_model/blob/main/RainDrop.jpg)
+
+To assess the effectiveness of the RainDrop model in processing multimodal data for classification tasks, the P36 dataset is fed into this model. This table details the RainDrop model’s architecture, including layers/variables, input/output dimensions, and function descriptions. It covers stages from initial input and preprocessing to GNN layers (the first and second layers) and output processing, explaining how time series features, brain network features, and timestamps from the P36 dataset are processed to finally output classification results.
+
+## 1. Initial Inputs
+| Layer/Variable | Input Dimension | Output Dimension | Function Description          |
+|----------------|-----------------|------------------|-------------------------------|
+| `src`          | (206, 128, 36)  | —                | Time series feature input     |
+| `brainnet`     | (128, 4)        | —                | Brain network feature input   |
+| `times`        | (206, 128)      | —                | Timestamp input               |
+| `lengths`      | (128)           | —                | Valid time steps per sample   |
+
+
+## 2. Preprocessing Layer
+| Layer/Variable          | Input Dimension | Output Dimension | Function Description                |
+|-------------------------|-----------------|------------------|-------------------------------------|
+| `missing_mask`          | (206, 128, 36)  | (206, 128, 36)   | Extract missing value mask from `src` |
+| `src` (valid features)  | (206, 128, 36)  | (206, 128, 36)   | Extract valid time series from `src`  |
+| `src(repeat_interleave)`| (206, 128, 36)  | (206, 128, 72)   | Expand feature dimension             |
+
+
+## 3. GNN Layers
+<details>
+<summary>First GNN Layer</summary>
+
+| Layer/Variable   | Input Dimension | Output Dimension | Function Description                |
+|------------------|-----------------|------------------|-------------------------------------|
+| `stepdata`       | (206, 72)       | (36, 412)        | Reshape for single-sample time series |
+| `edge_index`     | —               | (2, 1296)        | Graph edge index (input)            |
+| `edge_weights`   | (36, 36)        | (1296)           | Graph edge weights (input)          |
+| `query-key`      | (1296, 412)     | (1296, 1, 412)   | Linear transform for node features  |
+| `alpha` (attention) | (1296, 1, 412) | (1296, 1)        | Compute edge attention weights      |
+| `out` (propagated) | (1296, 1, 412) | (36, 412)        | Aggregate neighbor features via attention |
+
+</details>
+
+<details>
+<summary>Second GNN Layer</summary>
+
+| Layer/Variable       | Input Dimension | Output Dimension | Function Description                |
+|----------------------|-----------------|------------------|-------------------------------------|
+| `stepdata` (input)   | (36, 412)       | (36, 412)        | Node features from first GNN output |
+| `edge_index` (input) | (2, 1296)       | (2, 648)         | Edge index (top 50% high-weight edges after pruning) |
+| `edge_weights` (input) | (1296)       | (648)            | Corresponding pruned edge weights   |
+| `gamma` (temporal attn) | (1296, 206) | (648, 412)       | Compute temporal attention weights with time encoding |
+| `out` (propagated)   | (648, 1, 412)   | (36, 412)        | Aggregate neighbors with pruned edges/attention |
+
+</details>
+
+
+## 4. Output Processing
+| Layer/Variable          | Input Dimension | Output Dimension | Function Description                |
+|-------------------------|-----------------|------------------|-------------------------------------|
+| `stepdata` (reshaped)   | (36, 206, 2)    | (206, 128, 72)   | Reshape second GNN output to time series format |
+| `TransformerEncoder`    | (206, 128, 72)  | (206, 128, 72)   | Model sequence in time dimension    |
+| `output` (with PE)      | (206, 128, 72)  | (206, 128, 88)   | Concatenate output features with time encoding |
+| `output` (aggregated)   | (206, 128, 88)  | (128, 88)        | Mean aggregation via valid length mask |
+| `output` (with brainnet)| (128, 88)       | (128, 124)       | Concatenate with brain network features |
+| `mlp`                   | (128, 124)      | (128, 2)         | Output final classification via MLP |
 
 ### Requirements
 All models have tested using Python 3.9.
