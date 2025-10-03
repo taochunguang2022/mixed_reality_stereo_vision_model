@@ -115,6 +115,25 @@ To assess the effectiveness of the RainDrop model in processing multimodal data 
 | `output` (with brainnet)| (128, 88)       | (128, 124)       | Concatenate with brain network features |
 | `mlp`                   | (128, 124)      | (128, 2)         | Output final classification via MLP |
 
+## RainDrop Model Output
+
+The confusion matrix results obtained after five-fold cross-validation are illustrated in the figures below.
+![image](https://github.com/taochunguang2022/mixed_reality_stereo_vision_model/blob/main/output.jpg)
+
+For this classification task, fatigue (Label 1) is defined as the positive class, and comfort (Label 0) as the negative class. Detailed performance metrics for each fold (corresponding to Figures (a)–(e)) are summarized as follows:
+#### Figure (a)
+Normalized ratios of True Positive (TP), True Negative (TN), False Positive (FP), and False Negative (FN) are 0.94, 0.95, 0.06, and 0.05, respectively. Overall classification accuracy: 94.77%.
+#### Figure (b)
+Normalized ratios of TP, TN, FP, and FN are 0.92, 0.94, 0.08, and 0.06, respectively. Overall classification accuracy: 92.90%.
+#### Figure (c)
+Normalized ratios of TP, TN, FP, and FN are 0.92, 0.95, 0.08, and 0.05, respectively. Overall classification accuracy: 93.55%.
+#### Figure (d)
+Normalized ratios of TP, TN, FP, and FN are 0.93, 0.95, 0.07, and 0.05, respectively. Overall classification accuracy: 94.11%.
+#### Figure (e)
+Normalized ratios of TP, TN, FP, and FN are 0.95, 0.95, 0.05, and 0.05, respectively. Overall classification accuracy: 94.95%.
+
+Across all five folds, the model maintains consistently high performance—with classification accuracy ranging from 92.90% to 94.95%—and exhibits strong ability to distinguish between fatigued (Label 1) and comfortable (Label 0) states.
+
 ### Requirements
 All models have tested using Python 3.9.
 
